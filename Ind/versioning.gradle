@@ -29,7 +29,7 @@ class VersioningPlugin implements Plugin<Project> {
 
 	private String getVersion() {
 		def stdout = new ByteArrayOutputStream()
-		['git', 'describe', '--tags'].execute().text.trim()
+		['git', 'describe', '--always'].execute().text.trim()
 	}
 }
 
