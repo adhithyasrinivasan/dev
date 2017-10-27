@@ -6,30 +6,29 @@ buildscript {
 		url "https://plugins.gradle.org/m2/"
 	  }}
 	dependencies { classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-//		classpath 'net.nemerosa:versioning:2.0.0'
-		classpath "gradle.plugin.at.karriere.gradle.plugins:karriere-version:1.3.0"
+		classpath 'net.nemerosa:versioning:2.0.0'
+		//classpath "gradle.plugin.at.karriere.gradle.plugins:karriere-version:1.3.0"
 
 	}
 }
 
-plugins {
+/*plugins {
 	id 'com.palantir.git-version' version '0.4.0'
-}
+}*/
 
 apply plugin: 'eclipse'
 //apply plugin: 'groovy'
 apply plugin: 'spring-boot'
 apply plugin: 'application'
 //apply plugin: "at.karriere.version"
-//apply plugin: 'net.nemerosa.versioning'
+apply plugin: 'net.nemerosa.versioning'
 
 mainClassName = "Test.Test"
 
 jar {
     baseName = 'demo'
-	version gitVersion()
-    //version = '0.0.1-SNAPSHOT'
-	//version=versioning.info.full
+	//version = '0.0.1-SNAPSHOT'
+	version=versioning.info.full
 }
 
 repositories { mavenCentral() }
