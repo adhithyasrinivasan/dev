@@ -31,7 +31,7 @@ mainClassName = "Test.Test"
 
 jar {
     baseName = 'demo'
-	from versioning.versionFile
+	version=versioning.version
 	
 }
 
