@@ -27,15 +27,11 @@ versioning {
 }
 println(versioning.version)
 
-jar {
-  from versioning.versionFile
-}
-
 mainClassName = "Test.Test"
 
 jar {
     baseName = 'demo'
-	version = versioning.versionFile
+	from versioning.versionFile
 	
 }
 
