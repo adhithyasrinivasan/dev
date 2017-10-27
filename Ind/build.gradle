@@ -6,7 +6,7 @@ buildscript {
 		url "https://plugins.gradle.org/m2/"
 	  }}
 	dependencies { classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-		classpath "gradle.plugin.at.karriere.gradle.plugins:karriere-version:1.3.0"
+		//classpath "gradle.plugin.at.karriere.gradle.plugins:karriere-version:1.3.0"
 
 	}
 }
@@ -19,8 +19,17 @@ apply plugin: 'eclipse'
 //apply plugin: 'groovy'
 apply plugin: 'spring-boot'
 apply plugin: 'application'
-apply plugin: "at.karriere.version"
+//apply plugin: "at.karriere.version"
+apply from: 'versioning.gradle'
 
+versioning {
+  versionFile = file('src/main/resources/version.properties')
+}
+println(versioning.version)
+
+jar {
+  from versioning.versionFile
+}
 
 mainClassName = "Test.Test"
 
