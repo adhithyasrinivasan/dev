@@ -48,10 +48,34 @@ task wrapper(type: Wrapper) {
 }
 
 versioning {
-	scm = 'svn'
-	// Optional credentials
-	user = 'adhithyasrinivasan'
-	password = 'adhithya1234srinivasan'
- }
-
+   /**
+    * Defines the SCM to use in order to collect information.
+    *
+    * At the moment, only Git (git) and Subversion (svn) are supported.
+    */
+   scm = 'git'
+   /**
+    * Computation of the release type and the base, by parsing the scm info.
+    * By default, we use "/" as a separator in branch name between the type and the base. If not
+    * present, the type is the branch and the base is empty.
+    * F.e. if you want use tag name instead of branch you may provide something like:
+    */
+    releaseParser = { scmInfo, separator = '/' -> ->
+        List<String> part = scmInfo.tag.split('/') + ''
+        new net.nemerosa.versioning.ReleaseInfo(type: part[0], base: part[1])
+    }
+    /**
+     * Fetch branch name from environment variables. Useful when using CI like
+     * Travis or Jenkins.
+     */
+    branchEnv = ['TRAVIS_BRANCH', 'GIT_BRANCH', 'SVN_BRANCH', 'BRANCH_NAME']
+    /**
+     * Computation of the full version
+     */
+    full = { scmInfo -> "${scmInfo.branch}-${scmInfo.abbreviated}" }
+    /**
+     * Set of eligible branch types for computing a display version from the branch base name
+     */
+    releases = ['release']
+}
 
