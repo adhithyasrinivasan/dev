@@ -47,4 +47,11 @@ task wrapper(type: Wrapper) {
     gradleVersion = '2.9'
 }
 
+versioning {
+	scm = 'svn'
+	// Optional credentials
+	user = 'adhithyasrinivasan'
+	password = 'adhithya1234srinivasan'
+ }
+
 
