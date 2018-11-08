@@ -1,0 +1,32 @@
+{
+    "proxy":{
+        "request_listeners":[
+            {
+                "certificate_mode":"per_host",
+                "force_use_ssl":true,
+                "listen_mode":"loopback_only",
+                "listener_port":6666,
+                "redirect_to_host":"10.3.253.105",
+                "redirect_to_port":7002,
+                "running":false
+            },
+            {
+                "certificate_mode":"per_host",
+                "listen_mode":"loopback_only",
+                "listener_port":6670,
+                "redirect_to_host":"10.3.253.102",
+                "redirect_to_port":29324,
+                "running":false
+            },
+            {
+                "certificate_mode":"per_host",
+                "force_use_ssl":true,
+                "listen_mode":"loopback_only",
+                "listener_port":5050,
+                "redirect_to_host":"10.3.253.71",
+                "redirect_to_port":8443,
+                "running":false
+            }
+        ]
+    }
+}
